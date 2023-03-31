@@ -1,6 +1,7 @@
+import 'package:avocacy/forgotPWPage.dart';
 import 'package:avocacy/afterSignUpPage.dart';
-import 'package:avocacy/articles.dart';
-import 'package:avocacy/articlesBook.dart';
+import 'package:avocacy/articlesPage.dart';
+import 'package:avocacy/favArticlesPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 //root of the widget tree
@@ -142,64 +143,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-class ForgotPWPage extends StatefulWidget {
-  @override
-  _ForgotPWPageState createState() => _ForgotPWPageState();
-}
-
-class _ForgotPWPageState extends State<ForgotPWPage>{
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-         
-          children: <Widget>[
-
-            Padding(
-            padding: const EdgeInsets.only(top: 110.0)),
-
-            Center(child: Text('Find Your Password',
-            style: TextStyle(fontSize: 36,
-              fontWeight: FontWeight.bold,
-            ))),
-
-            Padding(
-            padding: const EdgeInsets.only(top: 20.0)),
-
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Enter your username',
-                    hintText: ''),
-              ),
-            ),
-
-             Container(
-              height: 50,
-              width: 200,
-              decoration: BoxDecoration(
-                  color: Colors.lime, borderRadius: BorderRadius.circular(20)),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => DashboardPage()));
-                },
-                child: Text(
-                  'Next',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-              ),
-            ),
-          ],
-         ),
-      ),
-    ); 
-  }
-}
-
 class SignUpPage extends StatefulWidget {
   @override
   _SignUpPageState createState() => _SignUpPageState();
@@ -225,32 +168,35 @@ class _SignUpPageState extends State<SignUpPage>{
             Padding(
             padding: const EdgeInsets.only(top: 10.0)),
 
-            Center(child: Text('Why sign up? We create a safe place for you by asking for your credential to access the app',
+            Text('Why sign up?\nWe create a safe place for you\nby asking for your credential to access the app',
             style: TextStyle(fontSize:15,
-            ))),
+            ), textAlign: TextAlign.center),
 
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.only(
+                  left: 20.0, right: 20.0, top: 20, bottom: 10),
               child: TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Enter your username',
-                    hintText: 'Please set your username that cannot identify you to keep you anonymous'),
+                    hintText: 'Pick a username that cannot identify you'),
               ),
             ),
   
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.only(
+                  left: 20.0, right: 20.0, top: 10, bottom: 10),
               child: TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Enter your password',
-                    hintText: 'Password must be longer than 4 digits'),
+                    hintText: 'Password must be longer than 8 digits'),
               ),
             ),
 
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.only(
+                  left: 20.0, right: 20.0, top: 10, bottom: 10),
               child: TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -261,7 +207,7 @@ class _SignUpPageState extends State<SignUpPage>{
 
             Container(
               height: 50,
-              width: 200,
+              width: 150,
               decoration: BoxDecoration(
                   color: Colors.lime, borderRadius: BorderRadius.circular(20)),
               child: ElevatedButton(
@@ -271,10 +217,13 @@ class _SignUpPageState extends State<SignUpPage>{
                 },
                 child: Text(
                   'Sign Up',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.brown
+                  )                  
                 ),
               ),
-            ),
           ],
          ),
       ),
@@ -294,7 +243,7 @@ class _DashboardPageState extends State<DashboardPage> {
      return Scaffold(
       bottomNavigationBar: GNav(
         gap: 10,
-        tabBackgroundColor: Colors.lime,
+        tabBackgroundColor: Colors.white,
         tabs: [
           GButton(icon: Icons.search,
           text: 'articles',onPressed:() {
@@ -310,7 +259,7 @@ class _DashboardPageState extends State<DashboardPage> {
           text: 'Settings')
         ],),
 
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 209, 219, 193),
       body: SingleChildScrollView(
         child: Column(
           
@@ -328,18 +277,20 @@ class _DashboardPageState extends State<DashboardPage> {
             padding: const EdgeInsets.only(top: 10.0)),
 
             Container(
-              height: 180,
+              height: 150,
               width: 400,
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                  color: Colors.lime),
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (_) => DashboardPage()));
-                },
+                }, style: ElevatedButton.styleFrom(
+                  primary: Colors.white
+                 ),
                 child: Text(
                   'Nearby Resources Bookmarks',
-                  style: TextStyle(fontSize: 25),
+                  style: TextStyle(fontSize: 20, color: Colors.brown),
                 ),
               ),
             ),
@@ -348,22 +299,23 @@ class _DashboardPageState extends State<DashboardPage> {
             padding: const EdgeInsets.only(top: 10.0)),
 
             Container(
-              height: 180,
+              height: 150,
               width: 400,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => ArticlesBook()));
-                },
+                      context, MaterialPageRoute(builder: (_) => FavArticlesPage()));
+                }, style: ElevatedButton.styleFrom(
+                  primary: Colors.white
+                 ),
                 child: Text(
                   'Related Articles Bookmarks',
-                  style: TextStyle(fontSize: 25),
+                  style: TextStyle(fontSize: 20, color: Colors.brown),
                 ),
               ),
             )
-
           ],
         ),
       ),

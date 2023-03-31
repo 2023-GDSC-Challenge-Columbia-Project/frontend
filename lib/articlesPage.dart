@@ -79,4 +79,7 @@ class _RelatedArticlesPageState extends State<RelatedArticlesPage> {
      // throw Exception('Could not launch $_url');
      // }
    // }
+
+
+   //use Tile List and Favorite button 
   }
