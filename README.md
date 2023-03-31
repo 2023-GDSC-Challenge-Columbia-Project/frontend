@@ -1,4 +1,4 @@
-# avocacy
+# avocay
 
 A new Flutter project.
 
