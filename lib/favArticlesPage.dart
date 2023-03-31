@@ -2,12 +2,13 @@ import 'package:avocacy/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class ArticlesBook extends StatefulWidget {
+class FavArticlesPage extends StatefulWidget {
   @override
-  _ArticlesBookState createState() => _ArticlesBookState();
+
+  _FavArticlesPageState createState() => _FavArticlesPageState();
 }
 
-class _ArticlesBookState extends State<ArticlesBook> {
+class _FavArticlesPageState extends State<FavArticlesPage> {
 
   @override
   Widget build(BuildContext context) {

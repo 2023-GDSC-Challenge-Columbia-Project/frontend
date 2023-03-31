@@ -1,5 +1,5 @@
-import 'package:avocacy/articles.dart';
-import 'package:avocacy/articlesBook.dart';
+import 'package:avocacy/articlesPage.dart';
+import 'package:avocacy/favArticlesPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -23,9 +23,7 @@ class _AfterSignUpPageState extends State<AfterSignUpPage>{
             Center(child: Text('Security Key Generated',
             style: TextStyle(fontSize: 30,
               fontWeight: FontWeight.bold
-            ))),
-
-       
+            ))),      
         ]
        )
       )
