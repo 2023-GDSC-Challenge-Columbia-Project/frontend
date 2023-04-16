@@ -118,7 +118,7 @@ class _FindSecurityKeyPageState extends State<FindSecurityKeyPage>{
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => DashboardPage()));
+                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
                 },
 
                 child: Text(

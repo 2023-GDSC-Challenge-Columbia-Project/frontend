@@ -1,9 +1,14 @@
-import 'package:avocacy/forgotPWPage.dart';
-import 'package:avocacy/afterSignUpPage.dart';
-import 'package:avocacy/articlesPage.dart';
-import 'package:avocacy/favArticlesPage.dart';
+import 'forgotPWPage.dart';
+import 'afterSignUpPage.dart';
+import 'articlesPage.dart';
+import 'favArticlesPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:provider/provider.dart';
+
+
+import 'package:url_launcher/url_launcher.dart'; 
+
 //root of the widget tree
 void main() {
   runApp(const MyApp());
@@ -15,17 +20,40 @@ class MyApp extends StatelessWidget {
 //materialApp provides the basis for an app
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(
+      create: (context) => MyAppState(),
+      child: MaterialApp(
       title: 'Avocacy',
       theme: ThemeData(
-          scaffoldBackgroundColor: Color.fromARGB(255, 209, 219, 193),
+          colorScheme: ColorScheme.fromSeed(seedColor:Color.fromARGB(255, 229, 237, 155)),
           
         ),
         home: LoginPage(),
-      );
-    
+      ),
+    );
   }
 }
+
+class MyAppState extends ChangeNotifier {
+  var allLinks = ["Unexpected pregnancy", "Parental support", "Many", "Shoot"];
+  var favorites = [];
+
+  void toggleFavorite([String? link]) {
+    if (favorites.contains(link)) {
+      favorites.remove(link);
+    } else {
+      favorites.add(link);
+    }
+    notifyListeners();
+  }
+
+  void removeFavorite(String link) {
+    favorites.remove(link);
+    notifyListeners();
+  }
+}
+
+
 
 //every widget needs to have one method in it.
 //build method describes how to build this widget
@@ -125,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => DashboardPage()));
+                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
                 }, 
                 child: Text(
                   'Login',
@@ -231,15 +259,162 @@ class _SignUpPageState extends State<SignUpPage>{
   }
 }
 
-class DashboardPage extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
   @override
-  _DashboardPageState createState() => _DashboardPageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _DashboardPageState extends State<DashboardPage> {
+class _MyHomePageState extends State<MyHomePage> {
+  var selectedIndex = 2;
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
+    Widget page;
+    switch (selectedIndex) {
+      case 2:
+        page = DashboardPage();
+        break;
+      case 0:
+        page = Placeholder();//Mappage();
+        break;
+      case 1:
+        page = RelatedArticlesPage(); //InformationPage();
+        break;
+      case 3:
+        page = Placeholder();//CalenderPage();
+        break;
+      case 4:
+        page = Placeholder();//SettingPage();
+        break;
+
+      default:
+        throw UnimplementedError('no widget for $selectedIndex');
+    }
+
+    var mainArea = ColoredBox(
+      color: colorScheme.surfaceVariant,
+      child: AnimatedSwitcher(
+        duration: Duration(milliseconds: 200),
+        child: page,
+      ),
+    );
+
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(child: mainArea),
+            SafeArea(
+              child: BottomNavigationBar(
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.map),
+                    label: 'Nearby Resources',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.search),
+                    label: 'Information',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.calendar_month),
+                    label: 'Calendar',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.settings),
+                    label: 'Settings',
+                  ),
+                ],
+                unselectedItemColor: colorScheme.primary,
+                fixedColor: Colors.brown,
+                currentIndex: selectedIndex,
+                onTap: (value) {
+                  setState(() {
+                    selectedIndex = value;
+                  });
+              },
+            ),
+          ),
+        ],
+          
+
+      ),
+    );
+  }
+}
+
+  class DashboardPage extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      var colorScheme = Theme.of(context).colorScheme;
+      return SingleChildScrollView(
+        child: Column(
+          
+          children: <Widget>[
+
+            Padding(
+            padding: const EdgeInsets.only(top: 110.0)),
+
+            Center(child: Text('Dashboard',
+            style: TextStyle(fontSize: 36,
+              fontWeight: FontWeight.bold,
+            ))),
+
+            Padding(
+            padding: const EdgeInsets.only(top: 10.0)),
+
+            Container(
+              height: 150,
+              width: 400,
+              decoration: BoxDecoration(
+                  color: Colors.lime),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
+                }, style: ElevatedButton.styleFrom(
+                  primary: Colors.white
+                 ),
+                child: Text(
+                  'Nearby Resources Bookmarks',
+                  style: TextStyle(fontSize: 20, color: Colors.brown),
+                ),
+              ),
+            ),
+
+            Padding(
+            padding: const EdgeInsets.only(top: 10.0)),
+
+            Container(
+              height: 150,
+              width: 400,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => FavArticlesPage()));
+                }, style: ElevatedButton.styleFrom(
+                  primary: Colors.white
+                 ),
+                child: Text(
+                  'Related Articles Bookmarks',
+                  style: TextStyle(fontSize: 20, color: Colors.brown),
+                ),
+              ),
+            )
+          ],
+        ),
+      );
+    }
+  }
+
+
+/*
      return Scaffold(
       bottomNavigationBar: GNav(
         gap: 10,
@@ -253,7 +428,7 @@ class _DashboardPageState extends State<DashboardPage> {
           GButton(icon: Icons.home,
           text: 'Home', onPressed:() {
             Navigator.push(
-              context, MaterialPageRoute(builder: (_) => DashboardPage()));
+              context, MaterialPageRoute(builder: (_) => MyHomePage()));
           }),
           GButton(icon: Icons.settings,
           text: 'Settings')
@@ -284,7 +459,7 @@ class _DashboardPageState extends State<DashboardPage> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => DashboardPage()));
+                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
                 }, style: ElevatedButton.styleFrom(
                   primary: Colors.white
                  ),
@@ -319,6 +494,4 @@ class _DashboardPageState extends State<DashboardPage> {
           ],
         ),
       ),
-     );  
-  }
-}
+     );*/
