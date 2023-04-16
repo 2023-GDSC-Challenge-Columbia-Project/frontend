@@ -7,7 +7,8 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
 
 
-import 'package:url_launcher/url_launcher.dart'; 
+//import 'package:url_launcher/url_launcher.dart';   url_launcher: ^6.1.10
+
 
 //root of the widget tree
 void main() {
