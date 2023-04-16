@@ -15,19 +15,10 @@ class FavArticlesPage extends StatelessWidget {
     if (appState.favorites.isEmpty) {
       return Scaffold(
         backgroundColor: theme.colorScheme.surfaceVariant,
+        appBar: AppBar(
+          title: Text("Search for your information!"),),
 
-        bottomNavigationBar: GNav(
-        gap: 10,
-        tabBackgroundColor: Colors.lime,
-        tabs: [
-          GButton(icon: Icons.home,
-          text: 'Home', onPressed:() {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
-                },),
-          GButton(icon: Icons.settings,
-          text: 'Settings')
-        ],),
+        
 
         body: Center(
         child: Text('No favorites yet.'),
@@ -36,20 +27,8 @@ class FavArticlesPage extends StatelessWidget {
 
       return Scaffold(
         backgroundColor: theme.colorScheme.surfaceVariant,
-
-        bottomNavigationBar: GNav(
-        gap: 10,
-        tabBackgroundColor: Colors.lime,
-        tabs: [
-          GButton(icon: Icons.home,
-          text: 'Home', onPressed:() {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
-                },),
-          GButton(icon: Icons.settings,
-          text: 'Settings')
-        ],),
-
+        appBar: AppBar(
+          title: Text("Favorite Articles Page"),),
         body: 
       
       Column( 
@@ -58,6 +37,8 @@ class FavArticlesPage extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(30),
+
+          
           child: Text('You have '
               '${appState.favorites.length} favorites:'),
         ),

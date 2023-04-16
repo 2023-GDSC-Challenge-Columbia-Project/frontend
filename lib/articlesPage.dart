@@ -1,9 +1,10 @@
-import 'package:avocacy/main.dart';
+import 'main.dart';
+import 'favArticlesPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
 
-//import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RelatedArticlesPage extends StatelessWidget {
   @override
@@ -12,41 +13,44 @@ class RelatedArticlesPage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
     IconData icon;
 
-    
+
     
     return Scaffold(
         backgroundColor: colorScheme.surfaceVariant,
-
-        bottomNavigationBar: GNav(
-        gap: 10,
-        tabBackgroundColor: Colors.lime,
-        tabs: [
-          GButton(icon: Icons.home,
-          text: 'Home', onPressed:() {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
-                },),
-          GButton(icon: Icons.settings,
-          text: 'Settings')
-        ],),
+        appBar: AppBar(
+          title: Text("Search for your information!"),
+          leading: Icon(Icons.book),
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => FavArticlesPage()));}, 
+              icon: const Icon(Icons.arrow_forward),
+              tooltip: "Open favorite articles page"),
+            IconButton(
+              onPressed: () {Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => FavArticlesPage()));}, 
+              icon: const Icon(Icons.arrow_forward),
+              tooltip: "Open favorite articles page")
+          ],
+          
+        ),
         
         body: 
       
       Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+                  
+
       children: [
-        Padding(
-          padding: const EdgeInsets.all(30),
-          child: Text('Search for your information!'),
-        ),
+                
         Expanded(
           // Make better use of wide windows with a grid.
           child: 
+
           
             ListView(
             children: [
-              for (var link in appState.allLinks)
-                
+              for (var link in appState.allLinks)             
                 
                 ListTile(
                   leading: IconButton(
@@ -57,10 +61,11 @@ class RelatedArticlesPage extends StatelessWidget {
                     },
                 ) ,
                   title: Text(
-                    link
+                    link.split('/').last.replaceAll('-', ' ')
                     //pair.asLowerCase,
                     //semanticsLabel: pair.asPascalCase,
                   ),
+                  onTap: () => launch("$link")
                 ),
             ],
           ),
@@ -78,7 +83,7 @@ class RelatedArticlesPage extends StatelessWidget {
 
 class _RelatedArticlesPageState extends State<RelatedArticlesPage> {
 
-//final Uri _url = Uri.parse('https://flutter.dev');
+final Uri _url = Uri.parse('https://flutter.dev');
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +109,7 @@ class _RelatedArticlesPageState extends State<RelatedArticlesPage> {
                 child: InkWell(
                   child: Text ('8 Pregnancy Questions to Ask When Unexpectedly Pregnant', 
                   textAlign: TextAlign.center, style:TextStyle(fontSize: 15)),
-                  //onTap:() => launch('https://www.availnyc.org/8-questions-unexpected-pregnancy')
+                  onTap:() => launch('https://www.availnyc.org/8-questions-unexpected-pregnancy')
                 )
               ),
 
@@ -117,11 +122,11 @@ class _RelatedArticlesPageState extends State<RelatedArticlesPage> {
               decoration: BoxDecoration(
                   color: Colors.lime, borderRadius: BorderRadius.circular(5)),
             
-                // child: InkWell(
-                //   child: Text ('8 Tips to Process an Accidental Pragnency', 
-                //   textAlign: TextAlign.center, style:TextStyle(fontSize: 15)),
-                //   onTap:() => launch('https://www.availnyc.org/8-tips-to-process-an-accidental-pregnancy')
-                // )
+                child: InkWell(
+                  child: Text ('8 Tips to Process an Accidental Pragnency', 
+                  textAlign: TextAlign.center, style:TextStyle(fontSize: 15)),
+                  onTap:() => launch('https://www.availnyc.org/8-tips-to-process-an-accidental-pregnancy')
+                )
               ),
             
 
@@ -132,13 +137,13 @@ class _RelatedArticlesPageState extends State<RelatedArticlesPage> {
       );
     }
 
-    //Future<void> _launchUrl() async {
-     // if (!await launchUrl(_url)) {
-     // throw Exception('Could not launch $_url');
-     // }
-   // }
+    Future<void> _launchUrl() async {
+     if (!await launchUrl(_url)) {
+     throw Exception('Could not launch $_url');
+     }
+   }
 
 
-   //use Tile List and Favorite button 
+   use Tile List and Favorite button 
   }
   */

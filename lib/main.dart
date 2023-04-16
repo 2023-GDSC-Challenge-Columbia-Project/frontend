@@ -5,9 +5,7 @@ import 'favArticlesPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
-
-
-//import 'package:url_launcher/url_launcher.dart';   url_launcher: ^6.1.10
+import 'package:url_launcher/url_launcher.dart';   
 
 
 //root of the widget tree
@@ -36,7 +34,22 @@ class MyApp extends StatelessWidget {
 }
 
 class MyAppState extends ChangeNotifier {
-  var allLinks = ["Unexpected pregnancy", "Parental support", "Many", "Shoot"];
+  var allLinks = ["https://www.availnyc.org/do-relationships-change-during-an-unexpected-pregnancy",
+  "https://www.availnyc.org/7-reasons-your-period-may-be-late",
+  "https://www.availnyc.org/how-to-break-the-news-of-unexpected-pregnancy",
+  "https://www.availnyc.org/8-questions-unexpected-pregnancy", 
+  "https://www.availnyc.org/8-tips-to-process-an-accidental-pregnancy",
+  //abortion links
+  "https://www.availnyc.org/can-i-get-safe-abortion",
+  "https://www.availnyc.org/everything-you-ve-ever-wanted-to-know-about-the-abortion-pill",
+  "https://www.availnyc.org/when-is-it-safe-to-get-pregnant-after-an-abortion",
+  "https://www.availnyc.org/abortion-recovery",
+  "https://www.availnyc.org/abortion-information",
+  "https://www.availnyc.org/confidential-abortion-information",
+  "https://www.availnyc.org/abortion-options-in-nyc-what-you-need-to-know",
+  "https://www.availnyc.org/three-things-know-abortion-new-york-city",
+  
+  ];
   var favorites = [];
 
   void toggleFavorite([String? link]) {
@@ -407,7 +420,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(fontSize: 20, color: Colors.brown),
                 ),
               ),
-            )
+            ),
           ],
         ),
       );
