@@ -2,10 +2,12 @@ import 'forgotPWPage.dart';
 import 'afterSignUpPage.dart';
 import 'articlesPage.dart';
 import 'favArticlesPage.dart';
+import 'calendarPage.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+//import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';   
+import 'package:url_launcher/url_launcher.dart';
+
 
 
 //root of the widget tree
@@ -297,10 +299,10 @@ class _MyHomePageState extends State<MyHomePage> {
         page = RelatedArticlesPage(); //InformationPage();
         break;
       case 3:
-        page = Placeholder();//CalenderPage();
+        page = CalendarPage();//CalenderPage();
         break;
       case 4:
-        page = Placeholder();//SettingPage();
+        page = SettingPage();
         break;
 
       default:
@@ -360,6 +362,72 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+  class SettingPage extends StatefulWidget {
+    @override 
+    _SettingPageState createState() => _SettingPageState();
+  }
+  class _SettingPageState extends State<SettingPage> {
+    DateTime _dateTime = DateTime.now();
+    int? pregnancy_week;
+    int? tempdate;
+    
+    int daysBetween(DateTime from, DateTime to) {
+      from = DateTime(from.year, from.month, from.day);
+      to = DateTime(to.year, to.month, to.day);
+      return (to.difference(from).inHours / 24).round();
+    }
+
+
+    void _showDatePicker() {
+      showDatePicker(
+        context: context, 
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2022,1,1), 
+        lastDate: DateTime.now(),
+      ).then((value) {
+        tempdate = (daysBetween(_dateTime, DateTime.now()));
+        pregnancy_week = tempdate! ~/ 7;
+        
+        setState((){
+          _dateTime = value!;
+        });
+      },
+      onError: (e) {_dateTime = DateTime.now();}
+      );
+
+    } 
+  @override
+  Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+    return Scaffold(
+      backgroundColor: colorScheme.surfaceVariant,
+      appBar: AppBar(
+        title: Text("Settings"),
+        leading: Icon(Icons.settings)),
+
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            // display chosen date
+            Text('When was your first day of last period?\n\n Week:' + pregnancy_week.toString(), style: TextStyle(fontSize: 30)),
+            MaterialButton(onPressed: _showDatePicker,
+            child: const Padding(padding: EdgeInsets.all(20.0),
+            child: Text('Choose to reset your pregnancy week',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+                )),
+                ),
+                color: colorScheme.secondary,
+      ),
+          ],
+        ),),);
+  }}
+
+  
+
+  
 
   class DashboardPage extends StatelessWidget {
     @override

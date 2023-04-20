@@ -1,9 +1,8 @@
 import 'main.dart';
 import 'favArticlesPage.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:provider/provider.dart';
-
+//import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:provider/provider.dart'; //for watch MyAppState
 import 'package:url_launcher/url_launcher.dart';
 
 class RelatedArticlesPage extends StatelessWidget {
@@ -13,64 +12,59 @@ class RelatedArticlesPage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
     IconData icon;
 
-
     
     return Scaffold(
-        backgroundColor: colorScheme.surfaceVariant,
-        appBar: AppBar(
-          title: Text("Search for your information!"),
-          leading: Icon(Icons.book),
-          actions: <Widget>[
-            IconButton(
-              onPressed: () {Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => FavArticlesPage()));}, 
-              icon: const Icon(Icons.arrow_forward),
-              tooltip: "Open favorite articles page"),
-            IconButton(
-              onPressed: () {Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => FavArticlesPage()));}, 
-              icon: const Icon(Icons.arrow_forward),
-              tooltip: "Open favorite articles page")
-          ],
-          
-        ),
+      backgroundColor: colorScheme.surfaceVariant,
+      appBar: AppBar(
+        title: Text("Search for your information!"),
+        leading: Icon(Icons.book),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => FavArticlesPage()));}, 
+            icon: const Icon(Icons.arrow_forward),
+            tooltip: "Open favorite articles page"),
+          IconButton(
+            onPressed: () {Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => FavArticlesPage()));}, 
+            icon: const Icon(Icons.arrow_forward),
+            tooltip: "Open favorite articles page")
+        ],
         
-        body: 
+      ),
       
-      Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-                  
-
-      children: [
+      body: 
+    
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
                 
-        Expanded(
-          // Make better use of wide windows with a grid.
-          child: 
-
-          
-            ListView(
-            children: [
-              for (var link in appState.allLinks)             
-                
-                ListTile(
-                  leading: IconButton(
-                    icon: Icon(Icons.favorite, semanticLabel: 'Bookmark'),
-                    color: colorScheme.primary,
-                    onPressed: () {
-                      appState.toggleFavorite(link);
-                    },
-                ) ,
-                  title: Text(
-                    link.split('/').last.replaceAll('-', ' ')
-                    //pair.asLowerCase,
-                    //semanticsLabel: pair.asPascalCase,
-                  ),
-                  onTap: () => launch("$link")
+            Expanded(
+              // Make better use of wide windows with a grid.
+              child:           
+                ListView(
+                  children: [
+                    for (var link in appState.allLinks)             
+                    
+                      ListTile(
+                        leading: IconButton(
+                          icon: Icon(Icons.favorite, semanticLabel: 'Bookmark'),
+                          color: colorScheme.primary,
+                          onPressed: () {
+                            appState.toggleFavorite(link);
+                          },
+                        ) ,
+                        title: Text(
+                          link.split('/').last.replaceAll('-', ' ')
+                          //pair.asLowerCase,
+                          //semanticsLabel: pair.asPascalCase,
+                        ),
+                        onTap: () => launch("$link")
+                      ),
+                  ],
                 ),
-            ],
-          ),
-        ),
-      ],
+            ),
+          ],
       ),
     ); 
   }

@@ -17,6 +17,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  calendar_date_picker2:
+    dependency: "direct main"
+    description:
+      name: calendar_date_picker2
+      sha256: f7ecd632260f2af6cfb72f6b7878f847b0a61821d50f26df9bd00b0a336d0cac
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.2"
   characters:
     dependency: transitive
     description:
@@ -62,14 +70,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_cupertino_date_picker:
-    dependency: "direct dev"
-    description:
-      name: flutter_cupertino_date_picker
-      sha256: "0797afc4040fef6c7da7cb24e84a4e12868010ad4255c4c469b54d95f53419af"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -97,13 +97,13 @@ packages:
     source: hosted
     version: "5.0.6"
   intl:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: intl
-      sha256: e8563d2ae9e4df520134b2e67460f1263486ab79b09f9479e86238ae71e1fb9a
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.15.8"
+    version: "0.18.1"
   js:
     dependency: transitive
     description:
