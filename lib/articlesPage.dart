@@ -10,7 +10,15 @@ class RelatedArticlesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
     var appState = context.watch<MyAppState>();
+    int pw = appState.pregnancy_week;
     IconData icon;
+    IconData? _getIcon (link){
+    if (appState.favorites.contains(link)) {
+      icon = Icons.favorite;
+    } else {
+      icon = Icons.favorite_border;
+    }
+    return icon;}
 
     
     return Scaffold(
@@ -48,7 +56,7 @@ class RelatedArticlesPage extends StatelessWidget {
                     
                       ListTile(
                         leading: IconButton(
-                          icon: Icon(Icons.favorite, semanticLabel: 'Bookmark'),
+                          icon: Icon(_getIcon(link), semanticLabel: 'Bookmark'),
                           color: colorScheme.primary,
                           onPressed: () {
                             appState.toggleFavorite(link);
