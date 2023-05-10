@@ -1,32 +1,97 @@
-import 'package:avocacy/main.dart';
+import 'main.dart';
+import 'favArticlesPage.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+//import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:provider/provider.dart'; //for watch MyAppState
 import 'package:url_launcher/url_launcher.dart';
 
-class RelatedArticlesPage extends StatefulWidget {
+class RelatedArticlesPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+    var appState = context.watch<MyAppState>();
+    int pw = appState.pregnancy_week;
+    IconData icon;
+    IconData? _getIcon (link){
+    if (appState.favorites.contains(link)) {
+      icon = Icons.favorite;
+    } else {
+      icon = Icons.favorite_border;
+    }
+    return icon;}
+
+    
+    return Scaffold(
+      backgroundColor: colorScheme.surfaceVariant,
+      appBar: AppBar(
+        title: Text("Search for your information!"),
+        leading: Icon(Icons.book),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => FavArticlesPage()));}, 
+            icon: const Icon(Icons.arrow_forward),
+            tooltip: "Open favorite articles page"),
+          IconButton(
+            onPressed: () {Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => FavArticlesPage()));}, 
+            icon: const Icon(Icons.arrow_forward),
+            tooltip: "Open favorite articles page")
+        ],
+        
+      ),
+      
+      body: 
+    
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+                
+            Expanded(
+              // Make better use of wide windows with a grid.
+              child:           
+                ListView(
+                  children: [
+                    for (var link in appState.allLinks)             
+                    
+                      ListTile(
+                        leading: IconButton(
+                          icon: Icon(_getIcon(link), semanticLabel: 'Bookmark'),
+                          color: colorScheme.primary,
+                          onPressed: () {
+                            appState.toggleFavorite(link);
+                          },
+                        ) ,
+                        title: Text(
+                          link.split('/').last.replaceAll('-', ' ')
+                          //pair.asLowerCase,
+                          //semanticsLabel: pair.asPascalCase,
+                        ),
+                        onTap: () => launch("$link")
+                      ),
+                  ],
+                ),
+            ),
+          ],
+      ),
+    ); 
+  }
+}
+
+/*class RelatedArticlesPage extends StatefulWidget {
   @override
   _RelatedArticlesPageState createState() => _RelatedArticlesPageState();
 }
 
 class _RelatedArticlesPageState extends State<RelatedArticlesPage> {
 
-//final Uri _url = Uri.parse('https://flutter.dev');
+final Uri _url = Uri.parse('https://flutter.dev');
 
   @override
   Widget build(BuildContext context) {
+    
      return Scaffold(
-      bottomNavigationBar: GNav(
-        gap: 10,
-        tabBackgroundColor: Colors.lime,
-        tabs: [
-          GButton(icon: Icons.home,
-          text: 'Home', onPressed:() {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => DashboardPage()));
-                },),
-          GButton(icon: Icons.settings,
-          text: 'Settings')
-        ],),
+      
         body: SingleChildScrollView(
         child: Column(
           
@@ -74,12 +139,13 @@ class _RelatedArticlesPageState extends State<RelatedArticlesPage> {
       );
     }
 
-    //Future<void> _launchUrl() async {
-     // if (!await launchUrl(_url)) {
-     // throw Exception('Could not launch $_url');
-     // }
-   // }
+    Future<void> _launchUrl() async {
+     if (!await launchUrl(_url)) {
+     throw Exception('Could not launch $_url');
+     }
+   }
 
 
-   //use Tile List and Favorite button 
+   use Tile List and Favorite button 
   }
+  */

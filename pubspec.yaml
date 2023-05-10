@@ -32,6 +32,9 @@ dependencies:
     sdk: flutter
 
   url_launcher: ^6.1.10
+  intl: ^0.18.1
+  calendar_date_picker2: ^0.5.2
+  numberpicker: ^2.1.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -44,8 +47,7 @@ dev_dependencies:
 
   provider: ^6.0.0
   google_nav_bar: ^5.0.6
-  flutter_cupertino_date_picker: ^0.8.0 
-  intl: ^0.15.8
+  
   
 
   # The "flutter_lints" package below contains a set of recommended lints to
