@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'forgotPWPage.dart';
 import 'afterSignUpPage.dart';
-import 'articlesPage.dart';
+import 'articlesPageCopy.dart';
 import 'favArticlesPage.dart';
 import 'calendarPage.dart';
 import 'loginPage.dart';
 import 'dashboardPage.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:google_maps_flutter_web/google_maps_flutter_web.dart';
 
 import 'package:flutter/material.dart';
 //import 'package:google_nav_bar/google_nav_bar.dart';
@@ -27,9 +29,11 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-      title: 'Avocacy',
+      title: 'Avocay',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor:Color.fromARGB(255, 229, 237, 155)),
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(seedColor:Color(0xFFEFF1DB)),
+        
           
         ),
         home: LoginPage(),
@@ -40,34 +44,68 @@ class MyApp extends StatelessWidget {
 
 class MyAppState extends ChangeNotifier {
 
+  //global variables
   int pregnancy_week = 12;
+ 
 
   var allLinks = ["https://www.availnyc.org/do-relationships-change-during-an-unexpected-pregnancy",
   "https://www.availnyc.org/7-reasons-your-period-may-be-late",
   "https://www.availnyc.org/how-to-break-the-news-of-unexpected-pregnancy",
   "https://www.availnyc.org/8-questions-unexpected-pregnancy", 
   "https://www.availnyc.org/8-tips-to-process-an-accidental-pregnancy",
-  //abortion links
+  //pregnancy links
   "https://www.availnyc.org/can-i-get-safe-abortion",
   "https://www.availnyc.org/everything-you-ve-ever-wanted-to-know-about-the-abortion-pill",
-  "https://www.availnyc.org/when-is-it-safe-to-get-pregnant-after-an-abortion",
   "https://www.availnyc.org/abortion-recovery",
   "https://www.availnyc.org/abortion-information",
   "https://www.availnyc.org/confidential-abortion-information",
   "https://www.availnyc.org/abortion-options-in-nyc-what-you-need-to-know",
   "https://www.availnyc.org/three-things-know-abortion-new-york-city",
-  
+  //abortion links
+  "https://www.availnyc.org/making-a-confident-decision-about-an-unplanned-pregnancy",
+  "https://www.availnyc.org/pregnant-options",
+  "https://www.availnyc.org/what-happens-if-im-pregnant-and-single",
+  "https://www.availnyc.org/can-i-be-a-student-while-pregnant",
+  "https://www.availnyc.org/can-finish-school-pregnant",
+  "https://www.availnyc.org/abortion-options-in-nyc-what-you-need-to-know"
+  //decisions links
+  "https://www.availnyc.org/5-tips-for-processing-your-abortion",
+  "https://www.availnyc.org/when-is-it-safe-to-get-pregnant-after-an-abortion",
+  "https://www.availnyc.org/relationships-after-an-abortion",
+  "https://www.availnyc.org/after-abortion-my-partner-doesnt-want-to-talk",
+  "https://www.availnyc.org/emotions-after-abortion"
+  //after abortion links
   ];
 
   var abortionLinks = ["https://www.availnyc.org/can-i-get-safe-abortion",
   "https://www.availnyc.org/everything-you-ve-ever-wanted-to-know-about-the-abortion-pill",
-  "https://www.availnyc.org/when-is-it-safe-to-get-pregnant-after-an-abortion",
   "https://www.availnyc.org/abortion-recovery",
   "https://www.availnyc.org/abortion-information",
   "https://www.availnyc.org/confidential-abortion-information",
   "https://www.availnyc.org/abortion-options-in-nyc-what-you-need-to-know",
   "https://www.availnyc.org/three-things-know-abortion-new-york-city",
   ];
+
+  var pregnancyLinks = ["https://www.availnyc.org/do-relationships-change-during-an-unexpected-pregnancy",
+  "https://www.availnyc.org/7-reasons-your-period-may-be-late", 
+  "https://www.availnyc.org/how-to-break-the-news-of-unexpected-pregnancy",
+  "https://www.availnyc.org/8-questions-unexpected-pregnancy",
+  "https://www.availnyc.org/8-tips-to-process-an-accidental-pregnancy"];
+
+  var decisionLinks = ["https://www.availnyc.org/making-a-confident-decision-about-an-unplanned-pregnancy",
+  "https://www.availnyc.org/pregnant-options",
+  "https://www.availnyc.org/what-happens-if-im-pregnant-and-single",
+  "https://www.availnyc.org/can-i-be-a-student-while-pregnant",
+  "https://www.availnyc.org/can-finish-school-pregnant",
+  "https://www.availnyc.org/abortion-options-in-nyc-what-you-need-to-know"];
+
+  var afterAbortionLinks = ["https://www.availnyc.org/5-tips-for-processing-your-abortion",
+  "https://www.availnyc.org/when-is-it-safe-to-get-pregnant-after-an-abortion",
+  "https://www.availnyc.org/relationships-after-an-abortion",
+  "https://www.availnyc.org/after-abortion-my-partner-doesnt-want-to-talk",
+  "https://www.availnyc.org/emotions-after-abortion"
+  ];
+
   var favorites = [];
 
   void toggleFavorite([String? link]) {
@@ -137,14 +175,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 items: [
                   BottomNavigationBarItem(
                     icon: Icon(Icons.map),
-                    label: 'Nearby Resources',
+                    label: 'Near Resources',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.search),
-                    label: 'Information',
+                    label: 'Articles',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
+                    icon: Image.asset("assets/images/avocado.png", height: 40),
                     label: 'Home',
                   ),
                   BottomNavigationBarItem(
