@@ -19,14 +19,31 @@ class RelatedArticlesPage extends StatelessWidget {
       icon = Icons.favorite_border;
     }
     return icon;}
-    //dummy comment ignore
-    String capitalize(String value) {
+   
+
+String capitalize(String value) {
     var result = value[0].toUpperCase();
     bool cap = true;
+
     for (int i = 1; i < value.length; i++) {
-      if (value[i - 1] == " " && cap == true) {
+      if (value[i - 1] == "n" && value[i] == "y") {
         result = result + value[i].toUpperCase();
+      }
+      else if (value[i - 1] == "y" && value[i] == "c"){
+        result = result + value[i].toUpperCase();
+      }
+      else if (value[i - 1] == " " && value[i] == "i") {
+        result = result + value[i].toUpperCase();
+      }
+      else if (value[i - 1] == "i" && value[i] == "m"){
+        result = result + "'" + value[i];
       } 
+      else if (value[i - 1] == " " && value[i] == "v"){
+        result = result + "'" + value[i];
+      }
+      else if (value[i - 1] == " "){
+        result = result + value[i].toUpperCase();
+      }
       else {
             result = result + value[i];
             cap = false;
@@ -34,6 +51,7 @@ class RelatedArticlesPage extends StatelessWidget {
     }
     return result;
   }
+   
 
     return MaterialApp(
       home: DefaultTabController(
