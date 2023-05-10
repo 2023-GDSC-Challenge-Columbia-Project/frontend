@@ -46,6 +46,7 @@ class MyAppState extends ChangeNotifier {
 
   //global variables
   int pregnancy_week = 12;
+
  
 
   var allLinks = ["https://www.availnyc.org/do-relationships-change-during-an-unexpected-pregnancy",
