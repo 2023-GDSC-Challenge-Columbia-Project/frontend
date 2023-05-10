@@ -19,11 +19,35 @@ class RelatedArticlesPage extends StatelessWidget {
       icon = Icons.favorite_border;
     }
     return icon;}
+    //dummy comment ignore
+    String capitalize(String value) {
+    var result = value[0].toUpperCase();
+    bool cap = true;
+    for (int i = 1; i < value.length; i++) {
+      if (value[i - 1] == " " && cap == true) {
+        result = result + value[i].toUpperCase();
+      } 
+      else {
+            result = result + value[i];
+            cap = false;
+      }
+    }
+    return result;
+  }
 
-    
-    return Scaffold(
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 4,
+    child: Scaffold(
       backgroundColor: colorScheme.surfaceVariant,
       appBar: AppBar(
+        bottom: const TabBar(tabs: [
+          Tab(icon: Icon(Icons.safety_check)),
+          Tab(icon: Icon(Icons.safety_check)),
+          Tab(icon: Icon(Icons.safety_check)),
+          Tab(icon: Icon(Icons.safety_check)),
+        ],
+        ),
         title: Text("Search for your information!"),
         leading: Icon(Icons.book),
         actions: <Widget>[
@@ -41,7 +65,8 @@ class RelatedArticlesPage extends StatelessWidget {
         
       ),
       
-      body: 
+      body: TabBarView(
+      children:[
     
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +77,7 @@ class RelatedArticlesPage extends StatelessWidget {
               child:           
                 ListView(
                   children: [
-                    for (var link in appState.allLinks)             
+                    for (var link in appState.abortionLinks)             
                     
                       ListTile(
                         leading: IconButton(
@@ -63,7 +88,7 @@ class RelatedArticlesPage extends StatelessWidget {
                           },
                         ) ,
                         title: Text(
-                          link.split('/').last.replaceAll('-', ' ')
+                          capitalize(link.split('/').last.replaceAll('-', ' '))
                           //pair.asLowerCase,
                           //semanticsLabel: pair.asPascalCase,
                         ),
@@ -74,7 +99,102 @@ class RelatedArticlesPage extends StatelessWidget {
             ),
           ],
       ),
-    ); 
+      Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+                
+            Expanded(
+              // Make better use of wide windows with a grid.
+              child:           
+                ListView(
+                  children: [
+                    for (var link in appState.pregnancyLinks)             
+                    
+                      ListTile(
+                        leading: IconButton(
+                          icon: Icon(_getIcon(link), semanticLabel: 'Bookmark'),
+                          color: colorScheme.primary,
+                          onPressed: () {
+                            appState.toggleFavorite(link);
+                          },
+                        ) ,
+                        title: Text(
+                          capitalize(link.split('/').last.replaceAll('-', ' '))
+                          //pair.asLowerCase,
+                          //semanticsLabel: pair.asPascalCase,
+                        ),
+                        onTap: () => launch("$link")
+                      ),
+                  ],
+                ),
+            ),
+          ],
+      ),
+      Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+                
+            Expanded(
+              // Make better use of wide windows with a grid.
+              child:           
+                ListView(
+                  children: [
+                    for (var link in appState.decisionLinks)             
+                    
+                      ListTile(
+                        leading: IconButton(
+                          icon: Icon(_getIcon(link), semanticLabel: 'Bookmark'),
+                          color: colorScheme.primary,
+                          onPressed: () {
+                            appState.toggleFavorite(link);
+                          },
+                        ) ,
+                        title: Text(
+                          capitalize(link.split('/').last.replaceAll('-', ' '))
+                          //pair.asLowerCase,
+                          //semanticsLabel: pair.asPascalCase,
+                        ),
+                        onTap: () => launch("$link")
+                      ),
+                  ],
+                ),
+            ),
+          ],
+      ),
+      Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+                
+            Expanded(
+              // Make better use of wide windows with a grid.
+              child:           
+                ListView(
+                  children: [
+                    for (var link in appState.afterAbortionLinks)             
+                    
+                      ListTile(
+                        leading: IconButton(
+                          icon: Icon(_getIcon(link), semanticLabel: 'Bookmark'),
+                          color: colorScheme.primary,
+                          onPressed: () {
+                            appState.toggleFavorite(link);
+                          },
+                        ) ,
+                        title: Text(
+                          capitalize(link.split('/').last.replaceAll('-', ' '))
+                          //pair.asLowerCase,
+                          //semanticsLabel: pair.asPascalCase,
+                        ),
+                        onTap: () => launch("$link")
+                      ),
+                  ],
+                ),
+            ),
+          ],
+      ),
+
+    ],),
+    ),),); 
   }
 }
 
