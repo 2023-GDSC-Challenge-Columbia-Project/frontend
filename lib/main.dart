@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'forgotPWPage.dart';
 import 'afterSignUpPage.dart';
-import 'articlesPage.dart';
+import 'articlesPageCopy.dart';
 import 'favArticlesPage.dart';
 import 'calendarPage.dart';
 import 'loginPage.dart';
 import 'dashboardPage.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:google_maps_flutter_web/google_maps_flutter_web.dart';
 
 import 'package:flutter/material.dart';
 //import 'package:google_nav_bar/google_nav_bar.dart';
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
       title: 'Avocay',
       theme: ThemeData(
+          useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor:Color(0xFFEFF1DB)),
         
           
@@ -43,7 +46,6 @@ class MyAppState extends ChangeNotifier {
 
   //global variables
   int pregnancy_week = 12;
-  //dummy comment ignore this
 
  
 

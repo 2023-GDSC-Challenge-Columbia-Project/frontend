@@ -51,11 +51,22 @@ String capitalize(String value) {
     }
     return result;
   }
-    
-    return Scaffold(
+   
+
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 4,
+    child: Scaffold(
       backgroundColor: colorScheme.surfaceVariant,
       appBar: AppBar(
-        title: Text("Press Heart to Mark As a Favorite"),
+        bottom: const TabBar(tabs: [
+          Tab(icon: Icon(Icons.safety_check)),
+          Tab(icon: Icon(Icons.safety_check)),
+          Tab(icon: Icon(Icons.safety_check)),
+          Tab(icon: Icon(Icons.safety_check)),
+        ],
+        ),
+        title: Text("Search for your information!"),
         leading: Icon(Icons.book),
         actions: <Widget>[
           IconButton(
@@ -72,7 +83,8 @@ String capitalize(String value) {
         
       ),
       
-      body: 
+      body: TabBarView(
+      children:[
     
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +95,7 @@ String capitalize(String value) {
               child:           
                 ListView(
                   children: [
-                    for (var link in appState.allLinks)             
+                    for (var link in appState.abortionLinks)             
                     
                       ListTile(
                         leading: IconButton(
@@ -105,7 +117,102 @@ String capitalize(String value) {
             ),
           ],
       ),
-    ); 
+      Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+                
+            Expanded(
+              // Make better use of wide windows with a grid.
+              child:           
+                ListView(
+                  children: [
+                    for (var link in appState.pregnancyLinks)             
+                    
+                      ListTile(
+                        leading: IconButton(
+                          icon: Icon(_getIcon(link), semanticLabel: 'Bookmark'),
+                          color: colorScheme.primary,
+                          onPressed: () {
+                            appState.toggleFavorite(link);
+                          },
+                        ) ,
+                        title: Text(
+                          capitalize(link.split('/').last.replaceAll('-', ' '))
+                          //pair.asLowerCase,
+                          //semanticsLabel: pair.asPascalCase,
+                        ),
+                        onTap: () => launch("$link")
+                      ),
+                  ],
+                ),
+            ),
+          ],
+      ),
+      Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+                
+            Expanded(
+              // Make better use of wide windows with a grid.
+              child:           
+                ListView(
+                  children: [
+                    for (var link in appState.decisionLinks)             
+                    
+                      ListTile(
+                        leading: IconButton(
+                          icon: Icon(_getIcon(link), semanticLabel: 'Bookmark'),
+                          color: colorScheme.primary,
+                          onPressed: () {
+                            appState.toggleFavorite(link);
+                          },
+                        ) ,
+                        title: Text(
+                          capitalize(link.split('/').last.replaceAll('-', ' '))
+                          //pair.asLowerCase,
+                          //semanticsLabel: pair.asPascalCase,
+                        ),
+                        onTap: () => launch("$link")
+                      ),
+                  ],
+                ),
+            ),
+          ],
+      ),
+      Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+                
+            Expanded(
+              // Make better use of wide windows with a grid.
+              child:           
+                ListView(
+                  children: [
+                    for (var link in appState.afterAbortionLinks)             
+                    
+                      ListTile(
+                        leading: IconButton(
+                          icon: Icon(_getIcon(link), semanticLabel: 'Bookmark'),
+                          color: colorScheme.primary,
+                          onPressed: () {
+                            appState.toggleFavorite(link);
+                          },
+                        ) ,
+                        title: Text(
+                          capitalize(link.split('/').last.replaceAll('-', ' '))
+                          //pair.asLowerCase,
+                          //semanticsLabel: pair.asPascalCase,
+                        ),
+                        onTap: () => launch("$link")
+                      ),
+                  ],
+                ),
+            ),
+          ],
+      ),
+
+    ],),
+    ),),); 
   }
 }
 
