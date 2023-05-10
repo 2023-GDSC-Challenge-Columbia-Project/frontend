@@ -37,7 +37,7 @@ class DashboardPage extends StatelessWidget {
                   primary: Colors.white
                  ),
                 child: Text(
-                  'Nearby Resources Bookmarks',
+                  'Your Favorite Nearby Resources',
                   style: TextStyle(fontSize: 20, color: Colors.brown),
                 ),
               ),
@@ -59,7 +59,7 @@ class DashboardPage extends StatelessWidget {
                   primary: Colors.white
                  ),
                 child: Text(
-                  'Related Articles Bookmarks',
+                  'Your Favorite Articles',
                   style: TextStyle(fontSize: 20, color: Colors.brown),
                 ),
               ),
