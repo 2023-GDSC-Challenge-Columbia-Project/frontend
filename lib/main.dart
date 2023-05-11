@@ -302,12 +302,29 @@ class MapSampleState extends State<MapSample> {
     position: LatLng(40.8552,73.8435),
     );
 
-     static final Marker _kClinicMarker6 = Marker(
+    static final Marker _kClinicMarker6 = Marker(
     markerId: MarkerId('_kClinic6'),
     infoWindow: const InfoWindow(title: 'Lincoln Medical Center',
     snippet: '234 E 149th St, Bronx, NY 10451'), 
     icon: BitmapDescriptor.defaultMarker,
     position: LatLng(40.8177,73.924),
+    );
+
+
+    static final Marker _kClinicMarker7 = Marker(
+    markerId: MarkerId('_kClinic7'),
+    infoWindow: const InfoWindow(title: 'The Bronx Center-Planned Parenthood',
+    snippet: '349 E 149th St 2nd Floor, Bronx, NY 10451'), 
+    icon: BitmapDescriptor.defaultMarker,
+    position: LatLng(40.8169,-73.9197),
+    );
+
+    static final Marker _kClinicMarker8 = Marker(
+    markerId: MarkerId('_kClinic8'),
+    infoWindow: const InfoWindow(title: 'ColumbiaDoctors - Obstetrics & Gynecology (OBGYN)',
+    snippet: '622 W 168th St, New York, NY 10032'), 
+    icon: BitmapDescriptor.defaultMarker,
+    position: LatLng(40.8415,-73.9411),
     );
 
 
@@ -324,7 +341,8 @@ class MapSampleState extends State<MapSample> {
       body: GoogleMap(
         mapType: MapType.normal,
         markers: {_kClinicMarker1, _kClinicMarker2, _kClinicMarker3, 
-        _kClinicMarker4, _kClinicMarker5, _kClinicMarker6
+        _kClinicMarker4, _kClinicMarker5, _kClinicMarker6, _kClinicMarker7,
+        _kClinicMarker8
 
         },
         initialCameraPosition: _kManhattan,
