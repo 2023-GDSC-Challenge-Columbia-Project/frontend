@@ -1,7 +1,5 @@
-import 'package:avocacy/afterSignUpPage.dart';
-import 'package:avocacy/articlesPage.dart';
-import 'package:avocacy/favArticlesPage.dart';
-import 'package:avocacy/main.dart';
+import 'afterSignUpPage.dart';
+import 'main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
