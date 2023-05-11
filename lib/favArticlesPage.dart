@@ -1,10 +1,13 @@
+import 'package:url_launcher/url_launcher.dart';
+
 import 'main.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
 
 
 class FavArticlesPage extends StatelessWidget {
+  const FavArticlesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -16,11 +19,11 @@ class FavArticlesPage extends StatelessWidget {
       return Scaffold(
         backgroundColor: theme.colorScheme.surfaceVariant,
         appBar: AppBar(
-          title: Text("Search for your information!"),),
+          title: const Text("Search for your information!"),),
 
         
 
-        body: Center(
+        body: const Center(
         child: Text('No favorites yet.'),
       ),); 
     }
@@ -28,7 +31,7 @@ class FavArticlesPage extends StatelessWidget {
       return Scaffold(
         backgroundColor: theme.colorScheme.surfaceVariant,
         appBar: AppBar(
-          title: Text("Favorite Articles Page"),),
+          title: const Text("Favorite Articles Page"),),
         body: 
       
       Column( 
@@ -48,20 +51,21 @@ class FavArticlesPage extends StatelessWidget {
           
             ListView(
             children: [
-              for (var pair in appState.favorites)
+              for (var link in appState.favorites)
                 ListTile(
                   leading: IconButton(
-                    icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
+                    icon: const Icon(Icons.delete_outline, semanticLabel: 'Delete'),
                     color: theme.colorScheme.primary,
                     onPressed: () {
-                      appState.removeFavorite(pair);
+                      appState.removeFavorite(link);
                     },
                   ),
                   title: Text(
-                    pair
+                    capitalize(link.split('/').last.replaceAll('-', ' '))
                     //pair.asLowerCase,
                     //semanticsLabel: pair.asPascalCase,
                   ),
+                  onTap: () => launch("$link")
                 ),
             ],
           ),
