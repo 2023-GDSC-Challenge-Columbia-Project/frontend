@@ -16,6 +16,8 @@ import 'package:url_launcher/url_launcher.dart';
 enum ArticleType { Ab, Pr, De, Af }
 
 class RelatedArticlesPage extends StatefulWidget {
+  const RelatedArticlesPage({super.key});
+
   //const RelatedArticlesPage({super.key});
 
    @override
@@ -342,21 +344,7 @@ class RelatedArticlesPage extends StatefulWidget {
     }
     return icon;}
 
-    String capitalize(String value) {
-    var result = value[0].toUpperCase();
-    bool cap = true;
-    for (int i = 1; i < value.length; i++) {
-      if (value[i - 1] == " " && cap == true) {
-        result = result + value[i].toUpperCase();
-      } 
-      else {
-            result = result + value[i];
-            cap = false;
-      }
-    }
-    return result;
-  }
-
+  
     // Void? displaylists(String link,List articlearray)
     // {
     //   for (var link in articlearray)            
@@ -383,17 +371,17 @@ class RelatedArticlesPage extends StatefulWidget {
       home: Scaffold(
       backgroundColor: colorScheme.surfaceVariant,
       appBar: AppBar(
-        title: Text("Search for your information!"),
-        leading: Icon(Icons.book),
+        title: const Text("Search for your information!"),
+        leading: const Icon(Icons.book),
         actions: <Widget>[
           IconButton(
             onPressed: () {Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => FavArticlesPage()));}, 
+                    context, MaterialPageRoute(builder: (_) => const FavArticlesPage()));}, 
             icon: const Icon(Icons.arrow_forward),
             tooltip: "Open favorite articles page"),
           IconButton(
             onPressed: () {Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => FavArticlesPage()));}, 
+                    context, MaterialPageRoute(builder: (_) => const FavArticlesPage()));}, 
             icon: const Icon(Icons.arrow_forward),
             tooltip: "Open favorite articles page")
         ],
@@ -404,7 +392,7 @@ class RelatedArticlesPage extends StatefulWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Select multiple categories'),
+            const Text('Select multiple categories'),
             //MultipleChoice(),
             SegmentedButton<ArticleType>(
               segments: const <ButtonSegment<ArticleType>>[
@@ -442,7 +430,7 @@ class RelatedArticlesPage extends StatefulWidget {
                             //pair.asLowerCase,
                             //semanticsLabel: pair.asPascalCase,
                           ),
-                          onTap: () => launch("$link")
+                          onTap: () => launch(link)
                         ),
                       
                       if (selection.contains(ArticleType.Ab))                       
@@ -460,7 +448,7 @@ class RelatedArticlesPage extends StatefulWidget {
                             //pair.asLowerCase,
                             //semanticsLabel: pair.asPascalCase,
                           ),
-                          onTap: () => launch("$link")
+                          onTap: () => launch(link)
                         ),
 
                       if (selection.contains(ArticleType.Af))
@@ -478,7 +466,7 @@ class RelatedArticlesPage extends StatefulWidget {
                             //pair.asLowerCase,
                             //semanticsLabel: pair.asPascalCase,
                           ),
-                          onTap: () => launch("$link")
+                          onTap: () => launch(link)
                         ),
 
                       if (selection.contains(ArticleType.Pr))
@@ -496,7 +484,7 @@ class RelatedArticlesPage extends StatefulWidget {
                             //pair.asLowerCase,
                             //semanticsLabel: pair.asPascalCase,
                           ),
-                          onTap: () => launch("$link")
+                          onTap: () => launch(link)
                         ),
                   ],
                 ),
@@ -615,3 +603,4 @@ final Uri _url = Uri.parse('https://flutter.dev');
    use Tile List and Favorite button 
   }
   */
+
