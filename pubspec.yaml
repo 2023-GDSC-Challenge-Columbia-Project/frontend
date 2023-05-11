@@ -36,13 +36,15 @@ dependencies:
   intl: ^0.18.1
   calendar_date_picker2: ^0.5.2
   numberpicker: ^2.1.2
-  google_maps_flutter: ^2.2.6
-  google_maps_flutter_web: ^0.4.0+8
+  
+  #google_maps_flutter_web: ^0.4.0+8
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  google_maps_flutter: ^2.2.3
+  flutter_config: ^2.0.0
 
 dev_dependencies:
   flutter_test:
