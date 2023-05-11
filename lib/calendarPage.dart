@@ -6,6 +6,8 @@ import 'package:numberpicker/numberpicker.dart';
 //import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 
 class CalendarPage extends StatefulWidget {
+  const CalendarPage({super.key});
+
 
   @override
   _CalendarPageState createState() => _CalendarPageState();
@@ -62,7 +64,7 @@ class _CalendarPageState extends State<CalendarPage> {
         context: context, 
         builder: (BuildContext context,){
           return AlertDialog(
-            title: Text("pick number"),
+            title: const Text("pick number"),
             content: StatefulBuilder(
               builder: (context, setState) {
                 return NumberPicker(
@@ -85,7 +87,7 @@ class _CalendarPageState extends State<CalendarPage> {
         ),
          actions: [
           TextButton(
-            child: Text("OK",),
+            child: const Text("OK",),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -118,17 +120,18 @@ class _CalendarPageState extends State<CalendarPage> {
     return Scaffold(
       backgroundColor: colorScheme.surfaceVariant,
       appBar: AppBar(
-        title: Text("Settings"),
-        leading: Icon(Icons.calendar_month)),
+        title: const Text("Settings"),
+        leading: const Icon(Icons.calendar_month)),
 
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             // display chosen date
-            Center(child: Text('You are ' + appState.pregnancy_week.toString() +' Week(s) Pregnant', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
-            Text("When was your first day of last period?", style: TextStyle(fontSize: 20),),
-            MaterialButton(onPressed: _showDatePicker, 
+            Center(child: Text('You are ${appState.pregnancy_week} Week(s) Pregnant', style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
+            const Text("When was your first day of last period?", style: TextStyle(fontSize: 20),),
+            MaterialButton(onPressed: _showDatePicker,
+                color: Colors.white, 
             child: const Padding(padding: EdgeInsets.all(15.0),
             child: Text('Preganacy Calculator',
                 softWrap: true,
@@ -137,11 +140,11 @@ class _CalendarPageState extends State<CalendarPage> {
                 fontSize: 20,
                 )),
                 ),
-                color: Colors.white,
       ),
-            Center(child: Text('If you already know your pregnancy week,\nclick this for manual setting', style: TextStyle(fontSize: 20))),
+            const Center(child: Text('If you already know your pregnancy week,\nclick this for manual setting', style: TextStyle(fontSize: 20))),
 
       MaterialButton(onPressed: _showIntegerDialog,
+                color: Colors.white,
             child: const Padding(padding: EdgeInsets.all(15.0),
             child: Text('Set Pregnancy Week',
                 softWrap: true,
@@ -150,7 +153,6 @@ class _CalendarPageState extends State<CalendarPage> {
                 fontSize: 20,
                 )),
                 ),
-                color: Colors.white,
       ),
           ],
         ),),);

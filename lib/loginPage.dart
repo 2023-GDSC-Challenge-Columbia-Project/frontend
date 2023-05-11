@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'forgotPWPage.dart';
 import 'afterSignUpPage.dart';
 import 'main.dart';
@@ -7,6 +6,8 @@ import 'package:flutter/material.dart';
 //every widget needs to have one method in it.
 //build method describes how to build this widget
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -20,33 +21,33 @@ class _LoginPageState extends State<LoginPage> {
          
           children: <Widget>[
 
-            Padding(
-            padding: const EdgeInsets.only(top: 110.0)),
+            const Padding(
+            padding: EdgeInsets.only(top: 110.0)),
 
-            Center(child: Text('Avocay',
+            const Center(child: Text('Avocay',
             style: TextStyle(fontSize: 36,
               fontWeight: FontWeight.bold,
               fontStyle: FontStyle.italic
             ))),
 
-            Padding(
-            padding: const EdgeInsets.only(top: 20.0)),
+            const Padding(
+            padding: EdgeInsets.only(top: 20.0)),
 
-            Center(child: Text('We advocate women’s reproductive rights & justice',
+            const Center(child: Text('We advocate women’s reproductive rights & justice',
             style: TextStyle(fontSize: 15,
             ))),
 
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 10.0),
               child: Center(
-                child: Container(
+                child: SizedBox(
                     width: 200,
                     height: 40,
                     ),
               ),
             ),
 
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
                 decoration: InputDecoration(
@@ -56,8 +57,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                   left: 20.0, right: 20.0, top: 20, bottom: 10),
             
               child: TextField(
@@ -72,9 +73,9 @@ class _LoginPageState extends State<LoginPage> {
             TextButton(
               onPressed: (){
                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => ForgotPWPage()));
+                      context, MaterialPageRoute(builder: (_) => const ForgotPWPage()));
               },
-              child: Text(
+              child: const Text(
                 'Forgot your password?',
                 style: TextStyle(fontSize: 15, color: Colors.black),
               ),
@@ -83,33 +84,33 @@ class _LoginPageState extends State<LoginPage> {
             TextButton(
               onPressed: (){
                 Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => SignUpPage()));
+                      context, MaterialPageRoute(builder: (_) => const SignUpPage()));
               },
-              child: Text(
+              child: const Text(
                 'Do not have an account yet?',
                 style: TextStyle(fontSize: 15, color: Colors.black),
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0)),
+            const Padding(
+              padding: EdgeInsets.only(top: 10.0)),
 
             Container(
               height: 50,
               width: 200,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 89, 70, 14), borderRadius: BorderRadius.circular(20)),
+                  color: const Color.fromARGB(255, 89, 70, 14), borderRadius: BorderRadius.circular(20)),
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
-                }, 
-                child: Text(
+                      context, MaterialPageRoute(builder: (_) => const MyHomePage()));
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.brown
+                ), 
+                child: const Text(
                   'Login',
                   style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.brown
                 )
               ),
             ),
@@ -121,6 +122,8 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
@@ -134,23 +137,23 @@ class _SignUpPageState extends State<SignUpPage>{
       
           children: <Widget>[
 
-            Padding(
-            padding: const EdgeInsets.only(top: 110.0)),
+            const Padding(
+            padding: EdgeInsets.only(top: 110.0)),
 
-            Center(child: Text('Sign Up',
+            const Center(child: Text('Sign Up',
             style: TextStyle(fontSize: 36,
               fontWeight: FontWeight.bold,
             ))),
 
-            Padding(
-            padding: const EdgeInsets.only(top: 10.0)),
+            const Padding(
+            padding: EdgeInsets.only(top: 10.0)),
 
-            Text('Why sign up?\nWe create a safe place for you\nby asking for your credential to access the app',
+            const Text('Why sign up?\nWe create a safe place for you\nby asking for your credential to access the app',
             style: TextStyle(fontSize:15,
             ), textAlign: TextAlign.center),
 
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                   left: 20.0, right: 20.0, top: 20, bottom: 10),
               child: TextField(
                 decoration: InputDecoration(
@@ -160,8 +163,8 @@ class _SignUpPageState extends State<SignUpPage>{
               ),
             ),
   
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                   left: 20.0, right: 20.0, top: 10, bottom: 10),
               child: TextField(
                 decoration: InputDecoration(
@@ -171,8 +174,8 @@ class _SignUpPageState extends State<SignUpPage>{
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                   left: 20.0, right: 20.0, top: 10, bottom: 10),
               child: TextField(
                 decoration: InputDecoration(
@@ -190,15 +193,15 @@ class _SignUpPageState extends State<SignUpPage>{
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => AfterSignUpPage()));
+                      context, MaterialPageRoute(builder: (_) => const AfterSignUpPage()));
                 },
-                child: Text(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.brown
+                  ),
+                child: const Text(
                   'Sign Up',
                   style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.brown
-                  )                  
+                )                  
                 ),
               ),
           ],

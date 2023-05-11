@@ -1,9 +1,8 @@
-import 'package:avocacy/articlesPage.dart';
-import 'package:avocacy/favArticlesPage.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class AfterSignUpPage extends StatefulWidget {
+  const AfterSignUpPage({super.key});
+
   @override
   _AfterSignUpPageState createState() => _AfterSignUpPageState();
 }
@@ -11,14 +10,14 @@ class AfterSignUpPage extends StatefulWidget {
 class _AfterSignUpPageState extends State<AfterSignUpPage>{
   @override
   Widget build(BuildContext context){
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
          child: Column(
          
           children: <Widget>[
 
             Padding(
-            padding: const EdgeInsets.only(top: 110.0)),
+            padding: EdgeInsets.only(top: 110.0)),
 
             Center(child: Text('Security Key Generated',
             style: TextStyle(fontSize: 30,

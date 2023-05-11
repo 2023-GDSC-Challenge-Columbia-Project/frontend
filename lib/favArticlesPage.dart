@@ -2,11 +2,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'main.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
 
 
 class FavArticlesPage extends StatelessWidget {
+  const FavArticlesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -18,48 +19,19 @@ class FavArticlesPage extends StatelessWidget {
       return Scaffold(
         backgroundColor: theme.colorScheme.surfaceVariant,
         appBar: AppBar(
-          title: Text("Search for your information!"),),
+          title: const Text("Search for your information!"),),
 
         
 
-        body: Center(
+        body: const Center(
         child: Text('No favorites yet.'),
       ),); 
     }
-String capitalize(String value) {
-    var result = value[0].toUpperCase();
-    bool cap = true;
 
-    for (int i = 1; i < value.length; i++) {
-      if (value[i - 1] == "n" && value[i] == "y") {
-        result = result + value[i].toUpperCase();
-      }
-      else if (value[i - 1] == "y" && value[i] == "c"){
-        result = result + value[i].toUpperCase();
-      }
-      else if (value[i - 1] == " " && value[i] == "i") {
-        result = result + value[i].toUpperCase();
-      }
-      else if (value[i - 1] == "i" && value[i] == "m"){
-        result = result + "'" + value[i];
-      } 
-      else if (value[i - 1] == " " && value[i] == "v"){
-        result = result + "'" + value[i];
-      }
-      else if (value[i - 1] == " "){
-        result = result + value[i].toUpperCase();
-      }
-      else {
-            result = result + value[i];
-            cap = false;
-      }
-    }
-    return result;
-  }
       return Scaffold(
         backgroundColor: theme.colorScheme.surfaceVariant,
         appBar: AppBar(
-          title: Text("Favorite Articles Page"),),
+          title: const Text("Favorite Articles Page"),),
         body: 
       
       Column( 
@@ -82,7 +54,7 @@ String capitalize(String value) {
               for (var link in appState.favorites)
                 ListTile(
                   leading: IconButton(
-                    icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
+                    icon: const Icon(Icons.delete_outline, semanticLabel: 'Delete'),
                     color: theme.colorScheme.primary,
                     onPressed: () {
                       appState.removeFavorite(link);

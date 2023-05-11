@@ -1,10 +1,10 @@
 import 'main.dart';
 import 'favArticlesPage.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class DashboardPage extends StatelessWidget {
+  const DashboardPage({super.key});
+
     @override
     Widget build(BuildContext context) {
       var colorScheme = Theme.of(context).colorScheme;
@@ -13,38 +13,38 @@ class DashboardPage extends StatelessWidget {
           
           children: <Widget>[
 
-            Padding(
-            padding: const EdgeInsets.only(top: 110.0)),
+            const Padding(
+            padding: EdgeInsets.only(top: 110.0)),
 
-            Center(child: Text('Dashboard',
+            const Center(child: Text('Dashboard',
             style: TextStyle(fontSize: 36,
               fontWeight: FontWeight.bold,
             ))),
 
-            Padding(
-            padding: const EdgeInsets.only(top: 10.0)),
+            const Padding(
+            padding: EdgeInsets.only(top: 10.0)),
 
             Container(
               height: 150,
               width: 400,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.lime),
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
+                      context, MaterialPageRoute(builder: (_) => const MyHomePage()));
                 }, style: ElevatedButton.styleFrom(
-                  primary: Colors.white
+                  backgroundColor: Colors.white
                  ),
-                child: Text(
+                child: const Text(
                   'Your Favorite Nearby Resources',
                   style: TextStyle(fontSize: 20, color: Colors.brown),
                 ),
               ),
             ),
 
-            Padding(
-            padding: const EdgeInsets.only(top: 10.0)),
+            const Padding(
+            padding: EdgeInsets.only(top: 10.0)),
 
             Container(
               height: 150,
@@ -54,11 +54,11 @@ class DashboardPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => FavArticlesPage()));
+                      context, MaterialPageRoute(builder: (_) => const FavArticlesPage()));
                 }, style: ElevatedButton.styleFrom(
-                  primary: Colors.white
+                  backgroundColor: Colors.white
                  ),
-                child: Text(
+                child: const Text(
                   'Your Favorite Articles',
                   style: TextStyle(fontSize: 20, color: Colors.brown),
                 ),
