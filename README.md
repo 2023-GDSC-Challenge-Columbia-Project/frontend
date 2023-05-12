@@ -12,7 +12,7 @@ We want to contribute to the two UN Sustainable development goals, Good health a
 
 We use Flutter/Dart with Google Maps API.
 
-## 🥑 Feature
+## 🥑 Features
 
 Feature Overview
 1. Dashboard 
