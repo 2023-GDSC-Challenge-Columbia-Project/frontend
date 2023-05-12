@@ -16,7 +16,11 @@ We use Flutter/Dart with Google Maps API.
 
 Feature Overview
 1. Dashboard
-2. Pregnancy Calculator
-3. Related Articles
-4. Nearby Clinics
+
+<img src="Dashboard photo.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+3. Pregnancy Calculator
+4. Related Articles
+5. Nearby Clinics
 
