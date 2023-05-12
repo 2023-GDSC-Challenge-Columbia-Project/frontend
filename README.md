@@ -1,16 +1,22 @@
 ## 🥑 Introduction
 
-A new Flutter project.
+Hi, we are Avocay!
 
-## Getting Started
+We wanted to develop a mobile application that advocates women’s reproductive rights and justice because many women lack resources regarding their reproduction. We thought about our problem locally, aimed at women in New York, and wanted to avoid gender stereotypes. Our app Avocay wanted to provide a safe place and helpful resources for women going through unexpected pregnancies. 
 
-This project is a starting point for a Flutter application.
+## 🥑 Our UN Goals
 
-A few resources to get you started if this is your first Flutter project:
+We want to contribute to the two UN Sustainable development goals, Good health and gender equality. 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🥑 A Tech Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+We use Flutter/Dart with Google Maps API.
+
+## 🥑 Feature
+
+Feature Overview
+1. Dashboard
+2. Pregnancy Calculator
+3. Related Articles
+4. Nearby Clinics
+
