@@ -36,3 +36,6 @@ Users can choose categories of articles they want to see, and they can press hea
 When users press a map icon in the navigator bar, then they will see markers on the map, which are clinics. They also can find out how to get to the clinic and how long it will take. 
 <img width="344" alt="MapDemo2 (2)" src="https://github.com/2023-GDSC-Challenge-Columbia-Project/frontend/assets/94277988/a3b19790-ca4f-4023-b3bc-7fe0f5bf4f96">
 <img width="344" alt="MapDemo3" src="https://github.com/2023-GDSC-Challenge-Columbia-Project/frontend/assets/94277988/c4742b9e-7aa1-415d-a244-05b07e6e16c8">
+
+##🥑Prototype Video
+https://youtu.be/x04NSWchq7c
