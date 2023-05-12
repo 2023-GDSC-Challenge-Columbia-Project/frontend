@@ -4,7 +4,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
 
 
-class FavArticlesPage extends StatelessWidget {
+class FavPlacePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -16,19 +16,19 @@ class FavArticlesPage extends StatelessWidget {
       return Scaffold(
         backgroundColor: theme.colorScheme.surfaceVariant,
         appBar: AppBar(
-          title: Text("Search for your information!"),),
+          title: Text("Your favorite locations"),),
 
         
 
         body: Center(
-        child: Text('No favorites yet.'),
+        child: Text('No favorite locations yet.'),
       ),); 
     }
 
       return Scaffold(
         backgroundColor: theme.colorScheme.surfaceVariant,
         appBar: AppBar(
-          title: Text("Favorite Articles Page"),),
+          title: Text("Favorite Nearby Resources Page"),),
         body: 
       
       Column( 
@@ -40,7 +40,7 @@ class FavArticlesPage extends StatelessWidget {
 
           
           child: Text('You have '
-              '${appState.favorites.length} favorites:'),
+              '${appState.favoritePlaces.length} favorite resources:'),
         ),
         Expanded(
           // Make better use of wide windows with a grid.
@@ -48,27 +48,23 @@ class FavArticlesPage extends StatelessWidget {
           
             ListView(
             children: [
-              for (var link in appState.favorites)
+              for (var pair in appState.favoritePlaces)
                 ListTile(
                   leading: IconButton(
                     icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
                     color: theme.colorScheme.primary,
                     onPressed: () {
-                      appState.removeFavorite(link);
+                      appState.removeFavoritePlace(pair);
                     },
                   ),
-                  title: Text(
-                    capitalize(link.split('/').last.replaceAll('-', ' '))
-                    //pair.asLowerCase,
-                    //semanticsLabel: pair.asPascalCase,
+                  title: Text(pair.infoWindow.title?? "Default")
                   ),
-                ),
-            ],
+      ],),
+            
           ),
-        ),
-      ],
-      ),
-    );
+        ],),
+    
+      );
   }
 }
 

@@ -10,8 +10,6 @@ import 'package:url_launcher/url_launcher.dart';
 enum ArticleType { Ab, Pr, De, Af }
 
 class RelatedArticlesPage extends StatefulWidget {
-  const RelatedArticlesPage({super.key});
-
   //const RelatedArticlesPage({super.key});
 
    @override
@@ -26,7 +24,7 @@ class RelatedArticlesPage extends StatefulWidget {
     var colorScheme = Theme.of(context).colorScheme;
     var appstatetheme = Theme.of(context);
     var appState = context.watch<MyAppState>();
-    int pw = appState.pregnancy_week;
+    int? pw = appState.pregnancy_week;
     IconData icon;
     IconData? _getIcon (link){
     if (appState.favorites.contains(link)) {
@@ -36,7 +34,7 @@ class RelatedArticlesPage extends StatefulWidget {
     }
     return icon;}
 
-  
+
     // Void? displaylists(String link,List articlearray)
     // {
     //   for (var link in articlearray)            
@@ -63,17 +61,16 @@ class RelatedArticlesPage extends StatefulWidget {
       home: Scaffold(
       backgroundColor: colorScheme.surfaceVariant,
       appBar: AppBar(
-        title: const Text("Search for your information!"),
-        leading: const Icon(Icons.book),
+        title: Text("Select Categories"),
+        leading: Icon(Icons.book),
         actions: <Widget>[
           IconButton(
-            onPressed: () {Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => const FavArticlesPage()));}, 
-            icon: const Icon(Icons.arrow_forward),
+            onPressed: () {Navigator.pop(context);}, 
+            icon: const Icon(Icons.arrow_back),
             tooltip: "Open favorite articles page"),
           IconButton(
             onPressed: () {Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => const FavArticlesPage()));}, 
+                    context, MaterialPageRoute(builder: (_) => FavArticlesPage()));}, 
             icon: const Icon(Icons.arrow_forward),
             tooltip: "Open favorite articles page")
         ],
@@ -84,7 +81,7 @@ class RelatedArticlesPage extends StatefulWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Select multiple categories'),
+
             //MultipleChoice(),
             SegmentedButton<ArticleType>(
               segments: const <ButtonSegment<ArticleType>>[
@@ -122,7 +119,7 @@ class RelatedArticlesPage extends StatefulWidget {
                             //pair.asLowerCase,
                             //semanticsLabel: pair.asPascalCase,
                           ),
-                          onTap: () => launch(link)
+                          onTap: () => launch("$link")
                         ),
                       
                       if (selection.contains(ArticleType.Ab))                       
@@ -140,7 +137,7 @@ class RelatedArticlesPage extends StatefulWidget {
                             //pair.asLowerCase,
                             //semanticsLabel: pair.asPascalCase,
                           ),
-                          onTap: () => launch(link)
+                          onTap: () => launch("$link")
                         ),
 
                       if (selection.contains(ArticleType.Af))
@@ -158,7 +155,7 @@ class RelatedArticlesPage extends StatefulWidget {
                             //pair.asLowerCase,
                             //semanticsLabel: pair.asPascalCase,
                           ),
-                          onTap: () => launch(link)
+                          onTap: () => launch("$link")
                         ),
 
                       if (selection.contains(ArticleType.Pr))
@@ -176,7 +173,7 @@ class RelatedArticlesPage extends StatefulWidget {
                             //pair.asLowerCase,
                             //semanticsLabel: pair.asPascalCase,
                           ),
-                          onTap: () => launch(link)
+                          onTap: () => launch("$link")
                         ),
                   ],
                 ),

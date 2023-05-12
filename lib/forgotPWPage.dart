@@ -1,10 +1,10 @@
-import 'package:avocacy/main.dart';
+import 'afterSignUpPage.dart';
+import 'main.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 
 class ForgotPWPage extends StatefulWidget {
-  const ForgotPWPage({super.key});
-
   @override
   _ForgotPWPageState createState() => _ForgotPWPageState();
 }
@@ -18,18 +18,18 @@ class _ForgotPWPageState extends State<ForgotPWPage>{
          
           children: <Widget>[
 
-            const Padding(
-            padding: EdgeInsets.only(top: 110.0)),
+            Padding(
+            padding: const EdgeInsets.only(top: 110.0)),
 
-            const Center(child: Text('Find Your Password',
+            Center(child: Text('Find Your Password',
             style: TextStyle(fontSize: 30,
               fontWeight: FontWeight.bold,
             ))),
 
-            const Padding(
-            padding: EdgeInsets.only(top: 20.0)),
+            Padding(
+            padding: const EdgeInsets.only(top: 20.0)),
 
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
                 decoration: InputDecoration(
@@ -39,8 +39,8 @@ class _ForgotPWPageState extends State<ForgotPWPage>{
               ),
             ),
 
-            const Padding(
-            padding: EdgeInsets.only(top: 20.0)),
+            Padding(
+            padding: const EdgeInsets.only(top: 20.0)),
 
             Container(
               height: 50,
@@ -50,16 +50,16 @@ class _ForgotPWPageState extends State<ForgotPWPage>{
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => const FindSecurityKeyPage()));
+                      context, MaterialPageRoute(builder: (_) => FindSecurityKeyPage()));
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.brown
-                ),
 
-                child: const Text(
+                child: Text(
                   'Next',
                   style: TextStyle(color: Colors.white, fontSize: 25),
-                  )
+                  ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.brown
+                )
                   
                 ),
               ),
@@ -71,8 +71,6 @@ class _ForgotPWPageState extends State<ForgotPWPage>{
 }
 
 class FindSecurityKeyPage extends StatefulWidget {
-  const FindSecurityKeyPage({super.key});
-
   @override
   _FindSecurityKeyPageState createState() => _FindSecurityKeyPageState();
 }
@@ -86,18 +84,18 @@ class _FindSecurityKeyPageState extends State<FindSecurityKeyPage>{
          
           children: <Widget>[
 
-            const Padding(
-            padding: EdgeInsets.only(top: 110.0)),
+            Padding(
+            padding: const EdgeInsets.only(top: 110.0)),
 
-            const Center(child: Text('Enter your security key\n(you received it when you signed up)',
+            Center(child: Text('Enter your security key\n(you received it when you signed up)',
             style: TextStyle(fontSize: 25,
               fontWeight: FontWeight.bold), textAlign: TextAlign.center
             )),
 
-            const Padding(
-            padding: EdgeInsets.only(top: 20.0)),
+            Padding(
+            padding: const EdgeInsets.only(top: 20.0)),
 
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
                 decoration: InputDecoration(
@@ -107,8 +105,8 @@ class _FindSecurityKeyPageState extends State<FindSecurityKeyPage>{
               ),
             ),
 
-            const Padding(
-            padding: EdgeInsets.only(top: 20.0)),
+            Padding(
+            padding: const EdgeInsets.only(top: 20.0)),
 
             Container(
               height: 50,
@@ -118,16 +116,16 @@ class _FindSecurityKeyPageState extends State<FindSecurityKeyPage>{
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => const MyHomePage()));
+                      context, MaterialPageRoute(builder: (_) => MyHomePage()));
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.brown
-                ),
 
-                child: const Text(
+                child: Text(
                   'Next',
                   style: TextStyle(color: Colors.white, fontSize: 25),
-                  )
+                  ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.brown
+                )
                   
                 ),
               ),
