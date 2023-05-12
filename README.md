@@ -23,5 +23,9 @@ The first page a user will see is the Dashboard with the two white tiles and bot
 Let's say a user pressed a calendar icon in the navigation bar, then our app will guide the user to pick the date on the calendar to calculate the pregnancy week. 
 
 4. Related Articles
-5. Nearby Clinics
-
+Users can choose categories of articles they want to see. 
+6. Nearby Clinics
+When users press a map icon in the navigator bar, then they will see markers on the map, which are clinics. They also can find out how to get to the clinic and how long it will take. 
+<img width="344" alt="MapDemo1 (1)" src="https://github.com/2023-GDSC-Challenge-Columbia-Project/frontend/assets/94277988/e5acf308-5bc6-4433-818c-ffe899d51956"> 
+<img width="344" alt="MapDemo2 (2)" src="https://github.com/2023-GDSC-Challenge-Columbia-Project/frontend/assets/94277988/a3b19790-ca4f-4023-b3bc-7fe0f5bf4f96">
+<img width="344" alt="MapDemo3" src="https://github.com/2023-GDSC-Challenge-Columbia-Project/frontend/assets/94277988/c4742b9e-7aa1-415d-a244-05b07e6e16c8">
