@@ -38,4 +38,4 @@ When users press a map icon in the navigator bar, then they will see markers on 
 <img width="344" alt="MapDemo3" src="https://github.com/2023-GDSC-Challenge-Columbia-Project/frontend/assets/94277988/c4742b9e-7aa1-415d-a244-05b07e6e16c8">
 
 ## 🥑Prototype Video
-{% include youtube.html id="x04NSWchq7c" %}
+[![Video Label](http://img.youtube.com/vi/x04NSWchq7c/0.jpg)](https://youtu.be/x04NSWchq7c)
