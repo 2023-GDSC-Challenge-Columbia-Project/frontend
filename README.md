@@ -16,10 +16,9 @@ We use Flutter/Dart with Google Maps API.
 
 Feature Overview
 1. Dashboard
+2. <img width="337" alt="Dashboard photo" src="https://github.com/2023-GDSC-Challenge-Columbia-Project/frontend/assets/94277988/080cbe7e-c2ee-41ee-93e7-0e4c83ed54e8">
 
-<img src="Dashboard photo.png"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
+
 3. Pregnancy Calculator
 4. Related Articles
 5. Nearby Clinics
