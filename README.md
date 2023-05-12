@@ -22,6 +22,10 @@ Feature Overview
 2. Pregnancy Calculator
 Let's say a user pressed a calendar icon in the navigation bar, then our app will guide the user to pick the date on the calendar to calculate the pregnancy week. 
 
+<img width="346" alt="Screenshot 2023-05-12 at 12 13 42 AM" src="https://github.com/2023-GDSC-Challenge-Columbia-Project/frontend/assets/119546622/d7cb3027-ca2d-4c34-882b-6e04da385ef0"><img width="346" alt="Screenshot 2023-05-12 at 12 14 22 AM" src="https://github.com/2023-GDSC-Challenge-Columbia-Project/frontend/assets/119546622/2b79466e-c8b6-4c8d-adce-e4aeb58b7a6e"><img width="346" alt="Screenshot 2023-05-12 at 12 13 58 AM" src="https://github.com/2023-GDSC-Challenge-Columbia-Project/frontend/assets/119546622/8bfb0abe-c1f4-4518-94c1-2f40cfc393ad">
+
+
+
 4. Related Articles
 Users can choose categories of articles they want to see. 
 6. Nearby Clinics
